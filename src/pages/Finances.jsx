@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AiOutlineClose } from "react-icons/ai";
-import { mobileDb, db } from "../../../config/firebase";
+import { mobileDb, db } from "../firebase";
 import { collection, getDocs, addDoc } from "firebase/firestore";
 import styles from "./Finance.module.css";
 
@@ -102,9 +102,7 @@ const Finances = () => {
       ...prev,
       [name]: parsedValue,
       balance:
-        name === "amount"
-          ? prev.totalCost - Number(value)
-          : prev.balance,
+        name === "amount" ? prev.totalCost - Number(value) : prev.balance,
     }));
   };
 
@@ -215,11 +213,7 @@ const Finances = () => {
                   </div>
                   <div className={styles.column}>
                     <label>Address</label>
-                    <input
-                      type="text"
-                      value={selectedOrder.address}
-                      disabled
-                    />
+                    <input type="text" value={selectedOrder.address} disabled />
                     <label>Contact Number</label>
                     <input
                       type="text"

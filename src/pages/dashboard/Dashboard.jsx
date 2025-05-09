@@ -8,7 +8,7 @@ import classes from "./Dashboard.module.css";
 import ORDERS from "../../Details/orders";
 import BarDataSet from "./BarDataSet";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { mobileDb, db } from "../../../../config/firebase";
+import { mobileDb, db } from "../../firebase";
 
 function Dashboard() {
   const navigate = useNavigate();

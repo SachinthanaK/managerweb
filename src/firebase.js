@@ -2,8 +2,15 @@
 // Import Firebase Modules
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getAuth, updatePassword } from "firebase/auth";
+import {
+  getFirestore,
+  collection,
+  query,
+  orderBy,
+  onSnapshot,
+  addDoc,
+} from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -45,4 +52,14 @@ const db = getFirestore(app);
 const mobileDb = getFirestore(mobileApp);
 //Initializes Firestore, allowing the app to interact with a NoSQL database for storing and retrieving data.
 
-export { auth, db, mobileDb }; //Export Auth and Firestore
+export {
+  auth,
+  db,
+  mobileDb,
+  updatePassword,
+  collection,
+  query,
+  orderBy,
+  onSnapshot,
+  addDoc,
+}; //Export Auth and Firestore

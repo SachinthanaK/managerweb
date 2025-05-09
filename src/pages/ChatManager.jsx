@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { mobileDb } from "../../../config/firebase";
+import { mobileDb } from "../firebase";
 import {
   collection,
   doc,

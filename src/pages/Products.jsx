@@ -6,7 +6,7 @@ import {
   addDoc,
   deleteDoc,
 } from "firebase/firestore";
-import { mobileDb } from "../../../config/firebase";
+import { mobileDb } from "../firebase";
 import { useEffect, useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import classes from "./Products.module.css";

@@ -7,7 +7,7 @@ import {
   orderBy,
   onSnapshot,
 } from "firebase/firestore";
-import { mobileDb, auth } from "../../../config/firebase";
+import { mobileDb, auth } from "../firebase";
 
 const ChatScreen = ({ chatId }) => {
   const [messages, setMessages] = useState([]);

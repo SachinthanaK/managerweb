@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { collection, query, onSnapshot, getDocs, where } from "firebase/firestore";
-import { mobileDb } from "../../../config/firebase.js";
+import {
+  collection,
+  query,
+  onSnapshot,
+  getDocs,
+  where,
+} from "firebase/firestore";
+import { mobileDb } from "../firebase";
 
 const ChatList = ({ onSelectChat }) => {
   const [chats, setChats] = useState([]);
-  const [pharmacyOwnerIds, setPharmacyOwnerIds] = useState(new Set()); 
+  const [pharmacyOwnerIds, setPharmacyOwnerIds] = useState(new Set());
 
   useEffect(() => {
-    
     const fetchPharmacyOwners = async () => {
       try {
         const ownersRef = collection(mobileDb, "pharmacyOwners");
         const snapshot = await getDocs(ownersRef);
-        const ownerIds = new Set(snapshot.docs.map((doc) => doc.id)); 
+        const ownerIds = new Set(snapshot.docs.map((doc) => doc.id));
         setPharmacyOwnerIds(ownerIds);
       } catch (error) {
         console.error("Error fetching pharmacy owners:", error);
@@ -29,13 +34,13 @@ const ChatList = ({ onSelectChat }) => {
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const filteredChats = snapshot.docs
         .map((doc) => ({ id: doc.id, ...doc.data() }))
-        .filter((chat) => pharmacyOwnerIds.has(chat.userId)); 
+        .filter((chat) => pharmacyOwnerIds.has(chat.userId));
 
       setChats(filteredChats);
     });
 
     return () => unsubscribe();
-  }, [pharmacyOwnerIds]); 
+  }, [pharmacyOwnerIds]);
 
   return (
     <div>

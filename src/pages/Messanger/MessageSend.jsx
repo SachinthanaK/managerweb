@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaPaperPlane } from "react-icons/fa";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { mobileDb, auth } from "../../../../config/firebase";
+import { mobileDb, auth } from "../../firebase";
 import styles from "./MessageSend.module.css";
 
 const MessageSend = ({ chatId }) => {
@@ -35,7 +35,7 @@ const MessageSend = ({ chatId }) => {
           onChange={(e) => setMessage(e.target.value)}
         />
         <button className={styles.sendButton} onClick={sendMessage}>
-          <FaPaperPlane/>
+          <FaPaperPlane />
         </button>
       </div>
     </div>
@@ -43,7 +43,6 @@ const MessageSend = ({ chatId }) => {
 };
 
 export default MessageSend;
-
 
 // import React, { useState } from "react";
 // import { FaPaperPlane } from "react-icons/fa";

@@ -7,7 +7,7 @@ import {
   onSnapshot,
   getDoc,
 } from "firebase/firestore";
-import { mobileDb, auth } from "../../../../config/firebase";
+import { mobileDb, auth } from "../../firebase";
 import styles from "./Message.module.css";
 
 const Message = ({ chatId }) => {

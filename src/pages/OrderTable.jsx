@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { DataGrid } from "@mui/x-data-grid";
 import Paper from "@mui/material/Paper";
 import { collection, getDocs } from "firebase/firestore";
-import { mobileDb } from "../../../config/firebase";
+import { mobileDb } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
 const getStateColor = (state) => {

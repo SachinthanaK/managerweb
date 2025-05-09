@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import { mobileDb } from "../../../../config/firebase";
+import { mobileDb } from "../../firebase";
 import styles from "./Friends.module.css";
 
 const Chats = ({ onSelectChat, searchTerm }) => {
@@ -53,8 +53,6 @@ const Chats = ({ onSelectChat, searchTerm }) => {
 };
 
 export default Chats;
-
-
 
 // import React, { useEffect, useState } from "react";
 // import { mobileDb } from "../../../../config/firebase";

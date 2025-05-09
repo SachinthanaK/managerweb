@@ -1,0 +1,103 @@
+.messageSendSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 12px;
+  border-top: 1px solid #ddd;
+  position: relative;
+}
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.file {
+  display: flex;
+  align-items: center;
+  background: #f0f2f5;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.file:hover {
+  background: #e0e0e0;
+}
+
+.file span {
+  margin-left: 5px;
+  font-size: 14px;
+}
+.messageInput {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 0 12px;
+  background: #f9f9f9;
+}
+
+.formControl {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  padding-left: 10px;
+}
+
+.sendButton {
+  background: #007bff;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.sendButton:hover {
+  background: #0056b3;
+}
+
+/* Emoji Section - Now as a popup */
+.emojiSection {
+  position: absolute;
+  bottom: 60px;
+  left: 10px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 250px;
+  gap: 5px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.showEmoji {
+  visibility: visible;
+  opacity: 1;
+}
+
+.emoji {
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.emoji:hover {
+  transform: scale(1.2);
+}

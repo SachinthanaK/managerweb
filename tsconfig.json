@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "types": ["vitest/globals"],
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx", // Keep this if you are using React with JSX.
+
+    /* Linting */
+    "strict": false, // Turn off strict mode since JavaScript doesn't enforce types.
+    "allowJs": true, // Allow JavaScript files in the project.
+    "checkJs": false, // Disable type checking for JavaScript files.
+    "noUnusedLocals": false, // Optional, to avoid issues with unused variables in JS.
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src", "tests", "*.js"],
+  "references": []
+}

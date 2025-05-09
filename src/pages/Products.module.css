@@ -1,0 +1,172 @@
+/* General Container */
+.container {
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Flexbox Layout */
+.flexWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Panels */
+.leftPanel,
+.rightPanel {
+  flex: 1;
+  min-width: 320px;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for Panels */
+.leftPanel:hover,
+.rightPanel:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Table Styling */
+.tableContainer {
+  overflow-x: auto;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.table {
+  width: 100%;
+  text-align: left;
+  color: #495057;
+  border-spacing: 0;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  border-radius: 8px;
+}
+
+.table thead {
+  background-color: #f1f3f5;
+  color: #343a40;
+}
+
+.table th,
+.table td {
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.table td img {
+  max-width: 100px;
+  border-radius: 4px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.table td img:hover {
+  transform: scale(1.2);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  z-index: 10;
+  background: white;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+.table tr:hover {
+  background-color: #f1f3f5;
+}
+
+/* Form Styling */
+.rightPanel {
+  padding: 2rem;
+  background-color: #ffffff;
+}
+
+.rightPanel form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.rightPanel label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #495057;
+}
+
+.rightPanel input,
+.rightPanel textarea {
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #495057;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.rightPanel input:focus,
+.rightPanel textarea:focus {
+  border-color: #6a5fdf;
+  outline: none;
+}
+
+.rightPanel input[type="file"] {
+  padding: 0.5rem;
+}
+
+.rightPanel .preview {
+  max-width: 150px;
+  margin-top: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Button Styles */
+button {
+  padding: 0.75rem 1.5rem;
+  background-color: #6a5fdf;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #584dcc;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .flexWrap {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .leftPanel,
+  .rightPanel {
+    width: 100%;
+  }
+}

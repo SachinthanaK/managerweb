@@ -1,0 +1,31 @@
+.slide-right-left-enter {
+  transform: translateX(100%); /* Start off-screen to the right */
+  opacity: 0;
+}
+.slide-right-left-enter-active {
+  transform: translateX(0); /* Move to the default position */
+  opacity: 1;
+  transition: transform 200ms ease-out, opacity 200ms ease-out;
+}
+.slide-right-left-exit {
+  transform: translateX(0); /* Start in the default position */
+  opacity: 1;
+}
+.slide-right-left-exit-active {
+  transform: translateX(100%); /* Move off-screen to the right */
+  opacity: 0;
+  transition: transform 200ms ease-out, opacity 200ms ease-out;
+}
+
+.sideDrawer {
+  position: fixed;
+  top: 80px;
+  right: 0; /* Anchor to the right */
+  width: 20%; /* Adjust width as needed */
+  min-width: 185px;
+  height: calc(100% - 80px); /* Adjust height to account for the top offset */
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  z-index: 100;
+  overflow-y: auto; /* Ensure scrolling if content overflows */
+}

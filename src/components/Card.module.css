@@ -1,0 +1,41 @@
+.content2 {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.content2 h2,
+h1 {
+  padding: 0;
+  margin: 0;
+  color: white;
+}
+@media (max-width: 1248px) {
+  .long {
+    font-size: 0.8em;
+    height: 85%;
+    max-width: 50%;
+  }
+  .short {
+    font-size: 0.75em;
+    height: 85%;
+    max-width: 40%;
+  }
+}
+@media (max-width: 1024px) {
+  .long,
+  .short {
+    max-width: 70%; /* Make them narrower */
+  }
+}
+@media (max-width: 768px) {
+  .long,
+  .short {
+    max-width: 90%; /* Almost full width for smaller devices */
+  }
+}
+@media (max-width: 480px) {
+  .long {
+    flex-direction: row;
+  }
+}

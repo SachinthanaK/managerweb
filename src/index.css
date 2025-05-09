@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  min-height: 100vh;
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  background-image: radial-gradient(ellipse at top left, #ffffff, #d1d1d1);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  --primary-color: #7f3dff;
+  --secondary-color: #6d28d9;
+  --v50: #f4f2ff;
+  --v100: #ebe7ff;
+  --v200: #beaeff;
+  --v300: #9d80ff;
+  --v400: #804dff;
+  --v500: #6316eb;
+  --v600: #5312c5;
+  --v700: #4511a1;
+  --v800: #28076e;
+}
+
+body {
+  margin-top: 80px;
+  padding: 0;
+}

@@ -1,0 +1,296 @@
+/* General Styles */
+.container {
+  padding: 24px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f0ff;
+  border-radius: 12px;
+}
+
+/* Add Payment Button */
+.addPaymentButton {
+  background-color: #6a0dad;
+  color: white;
+  padding: 14px 28px;
+  border: none;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  float: right;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.addPaymentButton:hover {
+  background-color: #5a0c95;
+  transform: translateY(-2px);
+}
+/* Modal Overlay */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(6px);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal Container */
+.modalContent {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: slideIn 0.3s ease-in-out;
+}
+
+/* Modal Header */
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modalHeader h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #5e35b1;
+  margin: 0;
+}
+
+.closeButton {
+  cursor: pointer;
+  font-size: 24px;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.closeButton:hover {
+  color: #222;
+}
+
+/* Form Layout */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Form Group */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formGroup label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #6a1b9a;
+}
+
+/* Grid Layout for Columns */
+.detailsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  width: 100%;
+}
+
+/* Column Styling */
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Input & Select Styling */
+.inputField,
+select,
+textarea {
+  padding: 10px;
+  border: 1px solid #d1c4e9;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+  background-color: #f3e5f5;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.inputField:focus,
+select:focus,
+textarea:focus {
+  border-color: #7e57c2;
+  box-shadow: 0 0 5px rgba(126, 87, 194, 0.4);
+  outline: none;
+}
+
+/* Textarea */
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Modal Footer */
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* Buttons */
+.cancelButton,
+.saveButton {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cancelButton {
+  background-color: #d32f2f;
+  color: white;
+}
+
+.cancelButton:hover {
+  background-color: #b71c1c;
+}
+
+.saveButton {
+  background-color: #6a1b9a;
+  color: white;
+}
+
+.saveButton:hover {
+  background-color: #4a148c;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .modalContent {
+    width: 90%;
+    padding: 24px;
+  }
+
+  .detailsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Table Styles */
+.paymentTable {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.paymentTable thead {
+  background-color: #6a0dad;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.paymentTable thead th {
+  padding: 16px 14px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.paymentTable tbody tr {
+  border-bottom: 1px solid #ddd;
+  background-color: white;
+  transition: background-color 0.3s ease;
+}
+
+.paymentTable tbody tr:nth-child(even) {
+  background-color: #f9f3ff;
+}
+
+.paymentTable tbody tr:hover {
+  background-color: #e5d9ff;
+}
+
+.paymentTable tbody td {
+  padding: 14px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+  .paymentTable thead {
+    display: none;
+  }
+
+  .paymentTable,
+  .paymentTable tbody,
+  .paymentTable tr,
+  .paymentTable td {
+    display: block;
+    width: 100%;
+  }
+
+  .paymentTable tr {
+    margin-bottom: 12px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+  }
+
+  .paymentTable td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  .paymentTable td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #4b0082;
+  }
+}

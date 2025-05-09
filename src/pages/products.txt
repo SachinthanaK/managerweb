@@ -1,0 +1,340 @@
+import { Link } from "react-router-dom";
+import {
+  collection,
+  getDocs,
+  doc,
+  updateDoc,
+  addDoc,
+} from "firebase/firestore";
+import { mobileDb } from "../../../config/firebase";
+import { useEffect, useState } from "react";
+import { FaEdit } from "react-icons/fa";
+import classes from "./Products.module.css";
+import axios from "axios";
+
+const Products = () => {
+  const [productData, setProductData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [sizes, setSizes] = useState([]);
+  const [designData, setDesignData] = useState({
+    id: "",
+    name: "",
+    description: "",
+    image: null,
+  });
+  const [isEditMode, setIsEditMode] = useState(false);
+  // const [file, setFile] = useState("");
+  // const [image, setImage] = useState("");
+  // const [uploadedImg, setUpload] = useState("");
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const productsCollection = collection(mobileDb, "Products");
+      const snapshot = await getDocs(productsCollection);
+      const products = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setProductData(products);
+    } catch (error) {
+      console.error("Error fetching products: ", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleAddSize = () => {
+    setSizes([
+      ...sizes,
+      { sizeName: "", width: "", length: "", unit: "", avgUnitPrice: "" },
+    ]);
+  };
+
+  const handleRemoveSize = (index) => {
+    setSizes(sizes.filter((_, i) => i !== index));
+  };
+
+  const handleSizeChange = (index, field, value) => {
+    const updatedSizes = sizes.map((size, i) =>
+      i === index ? { ...size, [field]: value } : size
+    );
+    setSizes(updatedSizes);
+  };
+
+  const handleDesignChange = (e) => {
+    const { name, value, files } = e.target;
+    setDesignData({
+      ...designData,
+      [name]: name === "image" ? files[0] : value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (isEditMode) {
+      try {
+        const designRef = doc(mobileDb, "Products", designData.id);
+        await updateDoc(designRef, {
+          name: designData.name,
+          description: designData.description,
+          sizes,
+        });
+        alert("Design updated successfully!");
+      } catch (error) {
+        console.error("Error updating design: ", error);
+      }
+    } else {
+      try {
+        const newId = `d${productData.length + 1}`;
+        const newDesign = {
+          id: newId,
+          name: designData.name,
+          description: designData.description,
+          available: true,
+          imageURL: null,
+          sizes,
+        };
+        await addDoc(collection(mobileDb, "Products"), newDesign);
+        alert("Design added successfully!");
+        setDesignData({ id: "", name: "", description: "", image: null });
+        setSizes([]);
+        fetchProducts(); // Refresh the table data
+      } catch (error) {
+        console.error("Error adding design: ", error);
+      }
+    }
+  };
+
+  const handleEditClick = (product) => {
+    setIsEditMode(true);
+    setDesignData({
+      id: product.id,
+      name: product.name,
+      description: product.description,
+      image: null, // Replace with actual image if available
+    });
+    setSizes(product.sizes || []);
+  };
+
+  // // adding
+  // function previewFiles(file) {
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(file);
+
+  //   reader.onloadend = () => {
+  //     setImage(reader.result);
+  //     console.log(image);
+  //   };
+  // }
+  // const handleChange = (e) => {
+  //   const file = e.target.files[0];
+  //   setFile(file);
+  //   previewFiles(file);
+  // };
+
+  // const handleNewSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const result = await axios.post("http://localhost:5000/products", {
+  //       image: image,
+  //     });
+  //     const uploadedImg = result.data.public_id;
+  //     setUpload(uploadedImg);
+  //   } catch (err) {
+  //     console.error("Error submitting data:", err);
+  //   }
+  // };
+
+  return (
+    <div className={classes.container}>
+      <div className={classes.flexWrap}>
+        {/* Left Panel */}
+        <div className={classes.leftPanel}>
+          <div className={classes.panelContent}>
+            <div className={classes.header}>
+              <div className={classes.select}></div>
+              <input
+                className={classes.searchInput}
+                type="text"
+                placeholder="Search"
+              />
+            </div>
+            <div className={classes.tableContainer}>
+              {loading ? (
+                <p>Loading...</p>
+              ) : (
+                <table className={classes.table}>
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Image</th>
+                      <th>Name</th>
+                      <th>Availability</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {productData.map((product, index) => (
+                      <tr key={product.id}>
+                        <td>{product.id}</td>
+                        <td>
+                          <img
+                            src={`http://localhost:5174/public/design${
+                              index + 1
+                            }.jpg`}
+                            alt={product.name}
+                            className={classes.productImage}
+                          />
+                        </td>
+                        <td>{product.name}</td>
+                        <td>
+                          {product.available ? "Available" : "Unavailable"}
+                        </td>
+                        <td>
+                          <button
+                            onClick={() => handleEditClick(product)}
+                            className={classes.editButton}
+                          >
+                            <FaEdit size={20} />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Right Panel */}
+        <div className={classes.rightPanel}>
+          <div className={classes.panelContent}>
+            <h1>{isEditMode ? "Edit Design" : "Add Design"}</h1>
+            <form onSubmit={handleSubmit}>
+              <div className={classes.formGroup}>
+                <label htmlFor="name">Design Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={designData.name}
+                  onChange={handleDesignChange}
+                  required
+                />
+              </div>
+              <div className={classes.formGroup}>
+                <label htmlFor="description">Description</label>
+                <textarea
+                  id="description"
+                  name="description"
+                  value={designData.description}
+                  onChange={handleDesignChange}
+                  rows="3"
+                  required
+                ></textarea>
+              </div>
+              <div className={classes.formGroup}>
+                <label htmlFor="image">Upload Image</label>
+                <input
+                  type="file"
+                  id="image"
+                  name="image"
+                  accept="image/*"
+                  onChange={handleDesignChange}
+                />
+              </div>
+              <div>
+                <h2>Sizes</h2>
+                {sizes.map((size, index) => (
+                  <div key={index} className={classes.sizeGroup}>
+                    <input
+                      type="text"
+                      placeholder="Size Name"
+                      value={size.sizeName}
+                      onChange={(e) =>
+                        handleSizeChange(index, "sizeName", e.target.value)
+                      }
+                      required
+                    />
+                    <input
+                      type="number"
+                      placeholder="Width"
+                      value={size.width}
+                      onChange={(e) =>
+                        handleSizeChange(index, "width", e.target.value)
+                      }
+                      required
+                    />
+                    <input
+                      type="number"
+                      placeholder="Length"
+                      value={size.length}
+                      onChange={(e) =>
+                        handleSizeChange(index, "length", e.target.value)
+                      }
+                      required
+                    />
+                    <input
+                      type="text"
+                      placeholder="Unit"
+                      value={size.unit}
+                      onChange={(e) =>
+                        handleSizeChange(index, "unit", e.target.value)
+                      }
+                      required
+                    />
+                    <input
+                      type="number"
+                      placeholder="Average Unit Price"
+                      value={size.avgUnitPrice}
+                      onChange={(e) =>
+                        handleSizeChange(index, "avgUnitPrice", e.target.value)
+                      }
+                      required
+                    />
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveSize(index)}
+                      className={classes.removeButton}
+                    >
+                      Remove
+                    </button>
+                  </div>
+                ))}
+                <button
+                  type="button"
+                  className={classes.addButton}
+                  onClick={handleAddSize}
+                >
+                  Add Size
+                </button>
+              </div>
+              <button type="submit" className={classes.submitButton}>
+                {isEditMode ? "Save Changes" : "Submit"}
+              </button>
+            </form>
+            {/* <form onSubmit={(e) => handleNewSubmit(e)}>
+        <lable htmlFor="fileInput"> Upload </lable>
+        <input
+          type="file"
+          id="fileInput"
+          onChange={(e) => handleChange(e)}
+          required
+          accept="image/*"
+        />
+        <button>Submit</button>
+      </form>
+      <img src={image} alt="Preview" /> */}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Products;

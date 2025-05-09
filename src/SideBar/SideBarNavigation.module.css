@@ -1,0 +1,103 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: rgb(229, 229, 229);
+  padding: 0;
+  margin-top: 0;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+.list a {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  align-self: stretch;
+  padding: 20px 36px;
+  justify-content: flex-start;
+  text-decoration: none;
+}
+
+.list span {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  align-self: stretch;
+  padding: 20px 36px;
+  justify-content: flex-start;
+  text-decoration: none;
+}
+.listhide {
+  display: none;
+}
+.list a:hover,
+.list a.active {
+  background-color: #6d28d9;
+  color: white;
+}
+
+.list span:hover,
+.list span.active {
+  background-color: #6d28d9;
+  color: white;
+}
+
+.logoutButton {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  align-self: stretch;
+  padding: 20px 36px;
+  justify-content: flex-start;
+  background: none;
+  border: none;
+  text-align: left;
+  color: #6d28d9;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.logoutButton:hover,
+.logoutButton.active {
+  background-color: #6d28d9;
+  color: white;
+}
+
+.user {
+  padding: 0.5rem 1.5rem;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.user img {
+  width: 3rem;
+  height: 3rem;
+}
+.user p {
+  padding: 0.03125rem;
+  color: #000000;
+  font-size: 1rem;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .listhide {
+    display: flex;
+    cursor: pointer;
+    color: #6d28d9;
+  }
+}

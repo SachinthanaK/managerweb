@@ -1,0 +1,127 @@
+/* OrderDetails.module.css */
+.container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.detailsSection {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.detailsSection h3 {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.detailsSection p {
+  margin: 5px 0;
+  color: #444;
+}
+
+p strong {
+  color: #000;
+}
+.container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.detailsSection {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.detailsSection h3 {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.detailsSection p {
+  margin: 5px 0;
+  color: #444;
+}
+
+p strong {
+  color: #000;
+}
+
+.urgentBadge {
+  display: inline-block;
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.designImage {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.actionsSection {
+  margin-top: 20px;
+}
+
+.actionsSection button {
+  margin-right: 10px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.approveButton {
+  background-color: green;
+  color: white;
+}
+
+.rejectButton {
+  background-color: red;
+  color: white;
+}
+
+.unitPriceInput {
+  margin-top: 10px;
+}
+
+.unitPriceInput input {
+  margin-right: 10px;
+}
+
+.stateDropdown {
+  margin-top: 10px;
+}
+
+.stateDropdown select {
+  margin-right: 10px;
+}
